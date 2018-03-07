@@ -29,7 +29,7 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('bills_by_users', function(table) {
       table.increments('id').primary();
-      table.integer('amount');
+      table.string('amount');
       table.integer('user_key');
       table.foreign('user_key').references('users.id');
       table.integer('bill_key');
