@@ -19,6 +19,33 @@ app.get('/', (request, response) => {
 });
 
 // houses table
+// get with query params
+// get house associated with user email
+app.get('/api/v1/houses', (request, response) => {
+  const { email } = request.query;
+  database('users').where('email', email).select()
+    .then(user => {
+      if (user.length) {
+        return user.house_key;
+      } else {
+        return response.status(404).json({ error: 'There is no user associated with this email address.'})
+      }
+    })
+    .then(key => database('houses').where('id', key).select()
+      .then(house => {
+        if (house.length) {
+          return response.status(200).json(house);
+        } else {
+          return response.status(404).json({ error: 'You have not yet joined a house. Please join or create a house.'})
+        }
+      })
+      .catch(error => response.status(500).json({ error })))
+    .catch(error => response.status(500).json({ error }));
+});
+
+// post
+// patch
+
 // users table
 // bills table
 // bills_by_users
