@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('houses').insert([
         {
-          id: 1,
+          id: 100,
           name: 'New House',
           secret_key: 'abcdef',
           members: 5
@@ -24,33 +24,33 @@ exports.seed = function(knex, Promise) {
         .then(() => {
           return knex('users').insert([
             {
-              id: 1,
+              id: 100,
               name: 'Lola',
               email: 'lo@lo.com',
-              house_key: 1
+              house_key: 100
             }
           ]);
         })
         .then(() => {
           return knex('bills').insert([
             {
-              id: 1,
+              id: 100,
               name: 'electric',
               description: 'hot fire',
               all_paid: false,
               total: '100',
               split_type: 'equal',
-              house_key: 1
+              house_key: 100
             }
           ]);
         })
         .then(() => {
           return knex('bills_by_users').insert([
             {
-              id: 1,
+              id: 100,
               amount: '20',
-              user_key: 1,
-              bill_key: 1,
+              user_key: 100,
+              bill_key: 100,
               paid: false
             }
           ]);
@@ -58,7 +58,7 @@ exports.seed = function(knex, Promise) {
         .then(() => {
           return knex('chores').insert([
             {
-              id: 1,
+              id: 100,
               name: 'Sweep',
               description: 'sweep the kitchen',
               done: false
@@ -68,21 +68,21 @@ exports.seed = function(knex, Promise) {
         .then(() => {
           return knex('bulletins').insert([
             {
-              id: 1,
+              id: 100,
               title: 'Announcement',
               description: 'so important',
               all_read: false,
-              posted_by: 1,
-              house_key: 1
+              posted_by: 100,
+              house_key: 100
             }
           ]);
         })
         .then(() => {
           return knex('bulletins_by_users').insert([
             {
-              id: 1,
-              user_key: 1,
-              bulletin_key: 1,
+              id: 100,
+              user_key: 100,
+              bulletin_key: 100,
               read: false
             }
           ]);
@@ -90,20 +90,20 @@ exports.seed = function(knex, Promise) {
         .then(() => {
           return knex('grocery_lists').insert([
             {
-              id: 1,
+              id: 100,
               store: 'Kings',
-              house_key: 1
+              house_key: 100
             }
           ]);
         })
         .then(() => {
           return knex('grocery_items').insert([
             {
-              id: 1,
+              id: 100,
               item: 'cheese',
               quantity: 100,
-              user_key: 1,
-              list_key: 1
+              user_key: 100,
+              list_key: 100
             }
           ]);
         })
@@ -114,7 +114,7 @@ exports.seed = function(knex, Promise) {
               name: 'Party',
               description: 'Lola birthday',
               date_and_time: '2017-03-19',
-              house_key: 1
+              house_key: 100
             }
           ]);
         });
