@@ -113,7 +113,7 @@ exports.seed = function(knex, Promise) {
               id: 1,
               name: 'Party',
               description: 'Lola birthday',
-              dateTime: '2017-03-19',
+              date_and_time: '2017-03-19',
               house_key: 1
             }
           ]);

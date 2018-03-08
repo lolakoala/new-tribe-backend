@@ -24,9 +24,11 @@ app.get('/', (request, response) => {
 app.get('/api/v1/houses', (request, response) => {
   const { email } = request.query;
   database('users').where('email', email).select()
+    // .then(user => user.json())
     .then(user => {
+      console.log('user', user)
       if (user.length) {
-        return user.house_key;
+        return user[0].house_key;
       } else {
         return response.status(404).json({ error: 'There is no user associated with this email address.'})
       }
@@ -34,7 +36,7 @@ app.get('/api/v1/houses', (request, response) => {
     .then(key => database('houses').where('id', key).select()
       .then(house => {
         if (house.length) {
-          return response.status(200).json(house);
+          return response.status(200).json(house[0]);
         } else {
           return response.status(404).json({ error: 'You have not yet joined a house. Please join or create a house.'})
         }
